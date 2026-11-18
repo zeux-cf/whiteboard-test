@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "whiteboard-test",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-11-18",
+  "compatibility_flags": ["nodejs_compat"],
+  "upload_source_maps": true,
+  "observability": {
+    "enabled": true,
+    "traces": { "enabled": true, "head_sampling_rate": 0.1 }
+  },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "whiteboard-test", "migrations_dir": "migrations","database_id": "87c27457-93e6-4e7f-af83-62f3e3450b9c" }
+  ],
+  "durable_objects": {
+    "bindings": [{ "name": "BOARD_ROOMS", "class_name": "BoardRoom" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["BoardRoom"] }]
+}
